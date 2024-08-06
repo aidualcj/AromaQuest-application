@@ -1,4 +1,3 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
 AromaQuest was a two-week group project aimed at helping individuals who want to renew their perfume selection.
 
 The system assists users by guiding them through a questionnaire that leads to a curated selection of perfumes that best match their preferences. This is achieved through an algorithm that utilizes the Guerlain perfume database. Users can view their results with timestamps and generate a list of favorite perfumes of their choice. Additionally, location-based features have been incorporated.
