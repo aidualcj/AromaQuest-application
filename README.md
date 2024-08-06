@@ -1,8 +1,8 @@
 AromaQuest was a two-week group project aimed at helping individuals who want to renew their perfume selection.
 
-The system assists users by guiding them through a questionnaire that leads to a curated selection of perfumes that best match their preferences. This is achieved through an algorithm that utilizes the Guerlain perfume database. Users can view their results with timestamps and generate a list of favorite perfumes of their choice. Additionally, location-based features have been incorporated.
+The system guides users through a detailed questionnaire and employs an algorithm to provide personalized perfume recommendations based on their preferences. It utilizes the <strong>Guerlain</strong> perfume database to ensure accurate and tailored suggestions. Users can view their results with timestamps and create a list of favorite perfumes. Additionally, the project includes location-based features.
 
-_ As an educational project, the code is continuously being improved.
+<em>As an educational project, the code is continuously being improved.</em>
 
 ![Capture d’écran 2024-08-06 à 10 47 48](https://github.com/user-attachments/assets/62863b2a-53e1-43c2-b316-3bc005a40145)
 ![Capture d’écran 2024-08-06 à 10 48 34](https://github.com/user-attachments/assets/ce4ca3ff-f3ea-4ef7-8c41-0d7581c725c1)
