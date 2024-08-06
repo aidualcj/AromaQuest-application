@@ -99,7 +99,7 @@ perfumes.each_with_index do |perfume, index|
               end
   if file_path
     file = File.open(file_path, "rb")
-    puts "On attache l'image"
+    puts "Attaching #{perfume.name} photo"
     perfume.illustration.attach(io: file, filename: "#{perfume.name}#{File.extname(file_path)}", content_type: "image/#{File.extname(file_path).delete('.')}")
     perfume.save!
     file.close # Assurez-vous de fermer le fichier après utilisation
