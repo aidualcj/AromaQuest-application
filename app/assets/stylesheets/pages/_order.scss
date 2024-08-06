@@ -1,0 +1,122 @@
+.order-recap-container {
+  padding: 20px;
+  background-color: #F3F2ED;
+}
+
+.back-nav-recap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  position: relative;
+
+  .back-icon-recap {
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+
+    .fa-chevron-left {
+      font-size: 1.5rem;
+      color: #000000;
+    }
+  }
+}
+
+.recap-title {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  color: black;
+  margin-top: 20px;
+}
+
+.recap-card {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 0px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  font-family: 'Archivo', 'Helvetica', 'sans-serif'; /* Police du modal */
+}
+
+.recap-item-header {
+  display: flex;
+  justify-content: space-between; /* Espace entre les colonnes */
+  align-items: center;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.recap-item-details-header {
+  flex: 2; /* Largeur plus grande pour "Produit" */
+  text-align: left; /* Aligné à gauche */
+}
+
+.recap-item-quantity-price-header {
+  flex: 1; /* Largeur réduite pour "Quantité" et "Prix" */
+  text-align: center; /* Aligné au centre */
+}
+
+.recap-item-quantity-price-header:nth-of-type(2) {
+  text-align: right; /* Aligné à droite pour "Quantité" */
+}
+
+.recap-item-quantity-price-header:nth-of-type(3) {
+  text-align: right; /* Aligné à droite pour "Prix" */
+}
+
+.recap-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  margin: 0;
+  font-size: 14px;
+}
+
+.recap-item-details {
+  flex-grow: 1;
+  max-width: 200px; /* Limite la largeur maximale du conteneur du titre */
+}
+
+.recap-perfume-name {
+  display: block;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.recap-perfume-brand {
+  display: block;
+}
+
+.recap-item-quantity-price {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  white-space: nowrap; /* Empêche les éléments de se décaler sur plusieurs lignes */
+}
+
+.recap-item-quantity, .recap-item-price {
+  font-size: 1rem;
+}
+
+.recap-delivery-total-section {
+  font-family: 'Archivo', 'Helvetica', 'sans-serif'; /* Police du modal */
+  font-size: 1.1rem; /* Ajustez la taille de la police selon vos besoins */
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.recap-delivery, .recap-total {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.recap-delivery p, .recap-total p {
+  margin: 0;
+}

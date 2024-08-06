@@ -1,0 +1,54 @@
+<div class="banner-myorders">
+  <div class="back-icon">
+    <%= link_to dashboard_path do %>
+      <i class="fa-solid fa-chevron-left"></i>
+    <% end %>
+  </div>
+  <h2 class="title-myorders">MES ACHATS</h2>
+</div>
+
+<div class="page-container">
+  <div class="orders-container">
+    <p class="description-order">Retrouvez toutes vos commandes ainsi que vos demandes de retour.</p>
+
+    <div class="orders-tab">
+      <p class="btn btn-active">EN LIGNE</p>
+      <p class="btn btn-inactive">EN MAGASIN</p>
+    </div>
+
+    <div class="orders-section">
+    <% if @orders.any? %>
+      <% @orders.each do |order| %>
+        <div class="order-item">
+          <button class="btn-order" data-bs-toggle="collapse" data-bs-target="#order-<%= order.id %>" aria-expanded="false" aria-controls="order-<%= order.id %>">
+            COMMANDE DU <%= formatted_date(order.created_at).upcase %><i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="collapse" id="order-<%= order.id %>">
+            <div class="order-details">
+              <% order.order_items.each do |item| %>
+                <div class="order-details2">
+                  <h5><%= item.perfume.name.upcase %></h5>
+                  <p><%= item.quantity %> </p>
+                  <p><%= number_to_currency(item.price, unit: "€", format: "%n %u") %></p>
+                </div>
+              <% end %>
+              <hr class="hr-order">
+              <div class="order-details2">
+                <p>Livraison</p>
+                <% delivery_fee = order.order_items.sum { |item| item.price * item.quantity } * 0.10 %>
+                <p><%= number_to_currency(delivery_fee, unit: "€", format: "%n %u") %></p>
+              </div>
+              <div class="order-details2">
+                <p>Total</p>
+                <% total_with_delivery = order.total + delivery_fee %>
+                <p><%= number_to_currency(total_with_delivery, unit: "€", format: "%n %u") %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>Aucune commande disponible pour le moment.</p>
+    <% end %>
+  </div>
+</div>

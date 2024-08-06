@@ -1,0 +1,164 @@
+.back-orga-result {
+  background-color: white;
+  padding: 20px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #eaeaea;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  position: sticky;
+  top: 0px;
+  z-index: 1000;
+
+  .back-icon-result {
+    position: absolute;
+    left: 0;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+
+    .fa-chevron-left {
+      font-size: 1.5rem;
+      color: #000000;
+    }
+  }
+
+  .title-result {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000000;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+.results-container {
+  padding: 20px;
+  background-color: #F3F2ED;
+
+  .sub-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  .perfumes-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .perfume-card {
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      padding: 10px;
+      margin: 10px 0;
+      width: 80%;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: relative;
+      z-index: 1;
+
+      .perfume-photo {
+        width: 60px;
+        height: 60px;
+        border-radius: 5px;
+        margin-right: 10px;
+      }
+
+      .perfume-info {
+        flex: 1;
+
+        .perfume-name {
+          font-size: 16px;
+          font-weight: bold;
+        }
+
+        .perfume-brand {
+          font-size: 14px;
+          color: #888;
+        }
+
+        .perfume-link {
+          font-size: 20px;
+          color: #000;
+        }
+      }
+
+      .favorite-link {
+        font-size: 20px;
+        color: #000000;
+      }
+    }
+  }
+}
+
+.resultats-section {
+  margin-bottom: 30px;
+  text-align: center;
+
+  .btn-resultats {
+    background-color: #9A9B89;
+    margin-bottom: 0px;
+    color: #fff;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%; /* Prend toute la largeur du conteneur */
+
+    i {
+      font-size: 1rem;
+      margin-left: 10px;
+      text-decoration: none;
+    }
+
+    &.collapsed {
+      i {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .collapse-content {
+    background-color: #9A9B89;
+    padding: 10px;
+    border-radius: 0px 0px 4px 4px;
+    width: 100%;
+    box-sizing: border-box;
+    text-decoration: none;
+
+    ul {
+      text-align: left;
+      font-family: 'Archivo', sans-serif;
+    }
+
+    li {
+      list-style-type: none;
+      margin-bottom: 10px;
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+      text-align: center;
+      font-family: 'Archivo', sans-serif;
+      margin-right: 25px;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    hr {
+      color: white;
+      width: 60%;
+      border: 0.5px solid white;
+    }
+  }
+}

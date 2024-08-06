@@ -1,0 +1,27 @@
+<h1>Mon Panier</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Parfum</th>
+      <th>Quantité</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart.cart_items.each do |cart_item| %>
+      <tr>
+        <td><%= cart_item.perfume.name %></td>
+        <td>
+          <%= form_with(model: cart_item, local: true) do |form| %>
+            <%= form.number_field :quantity, min: 1 %>
+            <%= form.submit 'Mettre à jour' %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to 'Retirer', cart_item, method: :delete, data: { confirm: 'Êtes-vous sûr ?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Passer la commande', orders_path, method: :post, class: 'btn btn-success' %>

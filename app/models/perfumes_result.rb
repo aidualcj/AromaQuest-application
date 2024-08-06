@@ -1,0 +1,2 @@
+class PerfumesResult < ApplicationRecord
+end

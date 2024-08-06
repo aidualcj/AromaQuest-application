@@ -1,0 +1,109 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid justify-content-between">
+    <button class="navbar-toggler order-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <%= link_to root_path, class: "navbar-brand mx-auto order-2" do %>
+      <%= image_tag 'logo.png', alt: 'AROMAQUEST', class: 'logo-img' %>
+    <% end %>
+    <a href="#" class="nav-link position-relative order-3" data-bs-toggle="modal" data-bs-target="#cartModal">
+      <i class="fa-solid fa-bag-shopping icon-cart"></i>
+      <span class="badge badge-pill badge-danger position-absolute top-0 start-100 translate-middle">
+        <% if user_signed_in? && current_user.cart&.cart_items.present? %>
+          <%= current_user.cart.cart_items.sum(:quantity) %>
+        <% else %>
+          0
+        <% end %>
+      </span>
+    </a>
+    <div class="collapse navbar-collapse justify-content-end order-4" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to "QUESTIONNAIRE", new_result_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "PARFUMS", perfumes_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "À PROPOS", apropos_dashboard_path, class: "nav-link" %>
+        </li>
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              MON COMPTE
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+              <li><%= link_to "TABLEAU DE BORD", dashboard_path, class: "dropdown-item" %></li>
+              <li><%= link_to "FAVORIS", favorites_dashboard_path, class: "dropdown-item" %></li>
+              <li><%= link_to "RÉSULTATS", results_dashboard_path, class: "dropdown-item" %></li>
+              <li><%= link_to "MES ACHATS", orders_path, class: "dropdown-item" %></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <%= link_to "SE DÉCONNECTER", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "SE CONNECTER", new_user_session_path, class: "nav-link" %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Modal -->
+<div class="modal fade" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title-container">
+          <h5 class="modal-title" id="cartModalLabel">MON PANIER</h5>
+        </div>
+        <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Close">
+          <i class="fa-solid fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-body">
+        <% if user_signed_in? && current_user.cart&.cart_items.present? %>
+          <% total_price = current_user.cart.cart_items.sum { |item| item.quantity * item.perfume.price } %>
+          <% delivery_fee = total_price * 0.10 %>
+          <ul class="cart-list">
+            <% current_user.cart.cart_items.each do |item| %>
+              <li class="cart-item">
+                <div class="item-details">
+                  <strong class="perfume-name"><%= item.perfume.name %></strong>
+                  <span class="perfume-brand"><%= item.perfume.brand %></span>
+                </div>
+                <div class="item-quantity-price">
+                  <span class="item-quantity"><%= item.quantity %></span>
+                  <span class="item-price"><%= number_to_currency(item.quantity * item.perfume.price, unit: "€", format: "%n %u") %></span>
+                </div>
+                <div class="item-delete">
+                  <%= link_to cart_item_path(item), method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer cet article ?" }, class: "btn btn-delete" do %>
+                    &times;
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+          <div class="border-top mt-4 pt-2 delivery-total-section">
+            <div class="delivery">
+              <p><strong>Livraison:</strong></p>
+              <p><%= number_to_currency(delivery_fee, unit: "€", format: "%n %u") %></p>
+            </div>
+            <div class="total">
+              <p><strong>TOTAL:</strong></p>
+              <p id="cart-total"><%= number_to_currency(total_price + delivery_fee, unit: "€", format: "%n %u") %></p>
+            </div>
+          </div>
+          <div class="text-center mt-3">
+            <%= link_to 'COMMANDER', orders_path, method: :post, class: 'btn btn-commande' %>
+          </div>
+        <% else %>
+          <p>Votre panier est vide.</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

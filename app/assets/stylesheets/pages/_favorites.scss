@@ -1,0 +1,131 @@
+
+.favorite-container {
+  background-color: #f3f2ed;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .d-flex {
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative; /* Ajouté pour permettre l'absolue de l'icône de retour */
+
+    .back-icon {
+      position: absolute;
+      left: 0;
+      display: flex;
+      align-items: center;
+
+      .fa-chevron-left {
+        font-size: 1.5rem;
+        color: #000000;
+      }
+    }
+
+    .title-favorite {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #000000;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+  }
+
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; // Espacement entre les cartes
+  }
+
+  .perfume-card {
+    background-color: white;
+    border: none;
+    border-radius: 4px;
+    position: relative;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+
+    .perfume-image-container {
+      padding: 10px;
+      position: relative;
+      margin-bottom: 40px; // Espacement entre l'image et le titre du parfum
+
+      .perfume-image {
+        width: 100%;
+        height: auto;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+      }
+
+      .favorite-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        i {
+          font-size: 2rem;
+          color: rgb(0, 0, 0);
+
+          &.fa-regular {
+            color: grey;
+          }
+        }
+      }
+    }
+
+    .card-body {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .perfume-name {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
+
+      .perfume-details {
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center; // Assure que le prix et la marque sont bien alignés verticalement
+        margin-bottom: 10px;
+
+        .perfume-brand {
+          font-size: 1rem;
+        }
+
+        .perfume-price {
+          font-family: 'Archivo Black', sans-serif;
+        }
+      }
+
+      .perfume-reviews {
+        display: flex;
+        align-items: center; // Aligner verticalement le texte "Avis" et les étoiles
+        margin-bottom: 10px; // Réduire l'espacement sous le bloc des avis
+
+        p {
+          margin-bottom: 0; // Supprimer les marges pour rapprocher le texte des étoiles
+        }
+
+        .perfume-rating {
+          display: flex;
+          gap: 2px;
+          margin-left: 10px; // Espacement entre le texte "Avis" et les étoiles
+
+          i {
+            color: black;
+            font-size: 0,5rem;
+          }
+        }
+      }
+    }
+  }
+}

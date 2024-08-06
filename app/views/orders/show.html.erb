@@ -1,0 +1,50 @@
+<div class="order-recap-container">
+  <div class="back-nav-recap">
+    <div class="back-icon-recap">
+      <%= link_to orders_path do %>
+        <i class="fa-solid fa-chevron-left"></i>
+      <% end %>
+    </div>
+    <h2 class="recap-title">RÉCAPITULATIF DE COMMANDE</h2>
+  </div>
+  <p>Merci pour votre commande !</p>
+  <p>Retrouvez les détails de votre commande passée le <%= formatted_date(@order.created_at).upcase %> :</p>
+
+  <div class="recap-card">
+    <div class="recap-items">
+      <div class="recap-item-header">
+        <div class="recap-item-details-header">
+          <strong>Produit</strong>
+        </div>
+        <div class="recap-item-quantity-price-header">
+          <strong>Quantité</strong>
+        </div>
+        <div class="recap-item-quantity-price-header">
+          <strong>Prix</strong>
+        </div>
+      </div>
+      <% @order.order_items.each do |item| %>
+        <div class="recap-item d-flex justify-content-between align-items-center">
+          <div class="recap-item-details">
+            <strong class="recap-perfume-name"><%= item.perfume.name.upcase %></strong>
+            <span class="recap-perfume-brand"><%= item.perfume.brand %></span>
+          </div>
+          <div class="recap-item-quantity-price">
+            <span class="recap-item-quantity"><%= item.quantity %></span>
+            <span class="recap-item-price"><%= number_to_currency(item.price, unit: "€", format: "%n %u") %></span>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="border-top mt-4 pt-2 recap-delivery-total-section">
+      <div class="recap-delivery">
+        <p><strong>Livraison:</strong></p>
+        <p><%= number_to_currency(@delivery_fee, unit: "€", format: "%n %u") %></p>
+      </div>
+      <div class="recap-total">
+        <p><strong>TOTAL:</strong></p>
+        <p id="recap-cart-total"><%= number_to_currency(@total_with_delivery, unit: "€", format: "%n %u") %></p>
+      </div>
+    </div>
+  </div>
+</div>

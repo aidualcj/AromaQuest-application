@@ -1,0 +1,113 @@
+/* Bannière */
+.banner-infos{
+  background-color: white;
+  text-align: center;
+  padding: 40px;
+  border-bottom: 1px solid #eaeaea;
+  width: 100%;
+  box-sizing: border-box;
+  // position: relative;
+  position: sticky;
+  top :20px;
+}
+
+.banner-title {
+  font-size: 2rem;
+  color: black;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @media (max-width: 576px) {
+    font-size: 1.5rem;
+  }
+}
+
+.back-icon {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+
+  .fa-chevron-left {
+    font-size: 1.5rem;
+    color: #000000;
+  }
+}
+
+
+/* Style du body */
+body {
+  background-color: #f4f4f4;
+}
+
+/* Conteneur du formulaire */
+.form-container {
+  display: flex;
+  flex-direction: column; /* Aligne le contenu verticalement */
+  align-items: center; /* Centre horizontalement */
+  min-height: 100vh;
+  margin-top: 20px;
+  padding: 0 20px; /* Ajoute de l'espace autour */
+}
+
+.form-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 0px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  margin-bottom: 20px; /* Ajoute de l'espace sous la carte */
+}
+
+/* Champs du formulaire */
+.form-group {
+  margin-bottom: 20px;
+
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #fff; /* Fond blanc pour les champs */
+  }
+}
+
+/* Styles pour le bouton */
+.submit-container {
+  text-align: center; /* Centre le bouton horizontalement */
+}
+
+.btn-save {
+  background-color: #9A9B89;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  border: none;
+  width: 150px;
+  text-align: center;
+  display: inline-block; /* Permet de centrer le bouton */
+  cursor: pointer;
+}
+
+@media (max-width: 576px) {
+  .form-container {
+    padding: 0 10px; /* Réduit l'espace autour pour les petits écrans */
+  }
+
+  .btn-save {
+    width: 100%;
+    max-width: 300px;
+  }
+}

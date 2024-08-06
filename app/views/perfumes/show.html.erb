@@ -1,0 +1,188 @@
+<div class="perfume-details-container">
+    <!-- Bouton Retour -->
+    <div class="return-button">
+     <%= link_to '<i class="fa-solid fa-chevron-left"></i>'.html_safe, perfumes_path, class: "btn btn-link btn-return" %>
+    </div>
+    <!-- Card avec l'image du parfum -->
+    <div class="perfume-image-card-wrapper">
+      <div class="perfume-image-card">
+        <div class="position-relative">
+          <% if @perfume.photo.present? %>
+            <%= cl_image_tag @perfume.illustration.key, alt: @perfume.name, class: "img-fluid" %>
+          <% else %>
+            <p>Photo du parfum</p>
+          <% end %>
+          <div class="position-absolute top-right action-buttons">
+            <% if current_user.favorites.exists?(perfume: @perfume) %>
+              <%= link_to perfume_favorite_path(@perfume, current_user.favorites.find_by(perfume: @perfume)), method: :delete, class: "btn btn-link btn-heart" do %>
+                <i class="fa-solid fa-heart"></i>
+              <% end %>
+            <% else %>
+              <%= link_to perfume_favorites_path(@perfume), data: { controller: "favorite", action: "favorite#changeFavorite"}, class: "btn btn-link btn-heart" do %>
+                <i class="fa-regular fa-heart" data-favorite-target="icon"></i>
+                <div data-favorite-target="notice"></div>
+              <% end %>
+            <% end %>
+          </div>
+          <button class="btn btn-link position-absolute bottom-right btn-share" data-bs-toggle="modal" data-bs-target="#shareModal">
+            <i class="fa-solid fa-share-alt"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Partie avec les boutons "Trouver mon parfum" et "Cart" -->
+    <div class="action-buttons-wrapper">
+      <div class="action-buttons">
+        <button data-bs-toggle="modal" data-bs-target="#findModal" class="btn btn-dark">Trouver mon parfum</button>
+        <%= link_to cart_items_path(perfume_id: @perfume.id), method: :post, class: "btn-icon-only" do %>
+        <i class="fa-solid fa-cart-shopping btn-cart"></i>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- Détails du parfum -->
+    <div class="perfume-details">
+      <h1 class="perfume-name"><%= @perfume.name %></h1>
+      <div class="perfume-info">
+        <h2 class="perfume-brand"><%= @perfume.brand %></h2>
+        <p class="perfume-price"><%= number_to_currency(@perfume.price, unit: "€", format: "%n %u") %></p>
+      </div>
+       <h3 class="perfume-intensity">
+        Intensité
+        <span class="intensity-dots">
+          <% max_intensity = 5 %>
+          <% (1..max_intensity).each do |i| %>
+            <% if i <= @perfume.intensity.to_i %>
+              <span class="dot"></span>
+            <% else %>
+              <span class="dot empty"></span>
+            <% end %>
+          <% end %>
+        </span>
+      </h3>
+    </div>
+
+    <!-- Description -->
+    <div class="perfume-description">
+      <p><%= @perfume.description %></p>
+    </div>
+
+    <!-- Avis -->
+    <div class="ratings" data-controller="review">
+      <p data-bs-toggle="collapse" href="#reviews" role="button" aria-expanded="false" aria-controls="reviews">
+        Avis (<%= @perfume.reviews.count %>)
+        <span class="average-rating">
+          <% average_rating = @perfume.reviews.average(:rating).to_f.round(1) %>
+          <% 5.times do |i| %>
+            <% if (i + 1) <= average_rating %>
+              <i class="fa-solid fa-star"></i>
+            <% else %>
+              <i class="fa-regular fa-star"></i>
+            <% end %>
+          <% end %>
+        </span>
+        <i class="fa-solid fa-chevron-down"></i>
+      </p>
+      <div class="collapse" id="reviews">
+        <p class="toggle-form btn-avis" data-action="click->review#toggle">
+          <i class="fa-solid fa-plus pe-1"></i> Ajouter un avis
+        </p>
+        <%= simple_form_for [@perfume, @review], html: { class: "d-none pb-3", data: {review_target:"form"}}, local: true  do |f| %>
+          <div>
+            <%= f.input :rating, collection: 1..5, label: "Note :" %>
+          </div>
+          <div>
+            <%= f.input :comment, as: :text, label: "Commentaire :" %>
+          </div>
+          <div>
+            <%= f.button :submit, 'Valider', class: 'btn btn-avis' %>
+          </div>
+          <% end %>
+        <% @perfume.reviews.each do |review| %>
+          <div class="review">
+            <div class="rating">
+              <% review.rating.times do %>
+                <i class="fa-solid fa-star"></i>
+              <% end %>
+              <% (5 - review.rating).times do %>
+                <i class="fa-regular fa-star"></i>
+              <% end %>
+            </div>
+            <p><%= review.comment %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- Notes de parfum -->
+    <div class="notes-section" data-controller="collapse">
+      <p role="button" class="btn-notes" data-action="click->collapse#toggle">
+        Notes de parfum
+        <i class="fa-solid fa-chevron-down"></i>
+      </p>
+      <div class="collapse-notes d-none" data-collapse-target="content">
+        <% if @perfume.notes.any? %>
+          <% @perfume.notes.each do |note| %>
+            <ul>
+              <li><strong>Notes de tête :</strong> <%= note.tete %></li>
+              <li><strong>Notes de cœur :</strong> <%= note.coeur %></li>
+              <li><strong>Notes de fond :</strong> <%= note.fond %></li>
+            </ul>
+          <% end %>
+        <% else %>
+          <p>Aucune note disponible pour ce parfum.</p>
+        <% end %>
+      </div>
+    </div>
+
+
+
+
+  <!-- Modal pour partager -->
+  <div class="modal fade" id="shareModal" tabindex="-1" aria-labelledby="shareModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="shareModalLabel">Partager ce parfum</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="btn-success-wrapper">
+            <a href="https://api.whatsapp.com/send?text=<%= perfume_url(@perfume) %>" target="_blank" class="btn btn-success">
+              <i class="fa-brands fa-whatsapp fa-2x"></i> WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- Modal pour trouver parfum -->
+  <div class="modal fade" id="findModal" tabindex="-1" aria-labelledby="findModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content map-modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title-map" id="findModalLabel">Trouver mon parfum</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" class="close-modal"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="modal-body">
+          <!-- Contenu du modal -->
+          <div class="map-box" style="width: 100%; height: 250px;"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
+          <div class="infos-magasins">
+            <% @magasins.each do |magasin| %>
+              <div class="magasin">
+                <h3><%= magasin.name %></h3>
+                <p><%= magasin.address %></p>
+                <hr>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

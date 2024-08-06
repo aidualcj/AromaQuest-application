@@ -1,0 +1,188 @@
+.navbar-dark {
+  background-color: #000 !important; /* Arrière-plan noir */
+
+  .container-fluid {
+    display: flex;
+    align-items: center; /* Centre verticalement le contenu */
+    justify-content: space-between; /* Espace entre les éléments */
+  }
+
+  .navbar-brand {
+    display: flex;
+    align-items: center; /* Centre verticalement le logo */
+    margin: 0; /* Supprime les marges par défaut */
+
+    .logo-img {
+      height: auto; /* Maintient les proportions du logo */
+      max-height: 60px; /* Ajustez en fonction de la hauteur de la navbar */
+      width: auto; /* Ajuste la largeur du logo */
+      margin-right: 5px;
+    }
+  }
+
+  .nav-link {
+    color: #fff !important; /* Texte blanc */
+    font-weight: 500;
+
+    &:hover {
+      color: #ddd !important; /* Couleur du texte au survol */
+    }
+  }
+
+  .navbar-toggler {
+    border: none;
+    order: 1; /* Met le toggler en première position */
+    margin-right: auto; /* Place le toggler à gauche */
+
+    .navbar-toggler-icon {
+      background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba%28255, 255, 255, 1%29' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+  }
+
+  .dropdown-menu {
+    background-color: #000000 !important; /* Arrière-plan noir */
+
+    .dropdown-item {
+      color: #ffffff !important; /* Texte blanc */
+
+      &:hover {
+        background-color: #e0e0e0 !important; /* Couleur de fond au survol */
+      }
+    }
+  }
+
+  .position-relative {
+    margin-left: auto; /* Place le panier à droite */
+  }
+
+  .badge {
+    color: white; /* Couleur du texte du badge */
+    padding-right: 25px;
+    padding-top:20px;
+  }
+
+  .icon-cart {
+    font-size: 1.5rem; /* Ajustez la taille ici */
+    padding: 14px;
+  }
+
+}
+
+/* Modal */
+.modal-content {
+  color: #000 !important; /* Texte en noir */
+  font-family: 'Archivo', 'Helvetica', 'sans-serif'; /* Police du modal */
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem; /* Ajoutez du padding si nécessaire */
+  position: relative;
+}
+
+.modal-title-container {
+  flex: 1; /* Prend tout l'espace disponible */
+  display: flex;
+  justify-content: center; /* Centre le titre horizontalement */
+}
+.modal-title {
+  color: #000 !important; /* Titre en noir */
+  text-align: center; /* Titre centré */
+  width: 100%; /* Prend toute la largeur disponible */
+  font-size: 1.25rem; /* Agrandit légèrement la police du titre */
+  margin-left: 25px;
+}
+
+.btn-close-custom {
+  background: black;
+  border: none;
+  font-size: 1.5rem;
+  color: #000 !important; /* Couleur de l'icône noire */
+}
+
+.cart-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+}
+
+.item-details {
+  flex-grow: 1;
+  max-width: 200px; /* Limite la largeur maximale du conteneur du titre */
+
+}
+
+.perfume-name {
+  display: block;
+  text-transform: uppercase;
+  font-weight: bold;
+  white-space: normal;
+}
+
+.perfume-brand {
+  display: block;
+}
+
+.item-quantity-price {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  white-space: nowrap; /* Empêche les éléments de se décaler sur plusieurs lignes */
+
+}
+
+.item-quantity, .item-price {
+  font-size: 1rem;
+}
+
+.item-delete {
+  margin-left: 10px;
+}
+
+/* Changer la police de LIVRAISON et TOTAL */
+.delivery-total-section {
+  font-family: 'Archivo', 'Helvetica', 'sans-serif';
+  font-size: 1.1rem; /* Ajustez la taille de la police selon vos besoins */
+  display: flex;
+  flex-direction: column;
+}
+
+.delivery, .total {
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn-delete {
+  background-color: #fff; /* Fond blanc */
+  color: #000; /* Texte noir */
+  border: 1px solid #000; /* Bordure noire */
+  border-radius: 50%; /* Arrondir le bouton pour le style */
+  width: 30px; /* Largeur du bouton */
+  height: 30px; /* Hauteur du bouton */
+  text-align: center; /* Centrer le texte */
+  line-height: 27px; /* Centrer verticalement le texte */
+  padding: 0px; /* Supprimer les padding */
+  font-size: 20px; /* Taille de la croix */
+}
+
+.btn-commande {
+  background-color: #9A9B89; /* Fond du bouton COMMANDER */
+  color: #fff !important; /* Texte en blanc */
+  border: none; /* Supprimer la bordure */
+  outline: none; /* Supprimer l'effet d'outline au focus */
+  box-shadow: none; /* Supprimer l'effet d'ombre au focus */
+  width: 100%; /* Prendre toute la largeur disponible */
+  padding: 10px; /* Ajouter un peu de padding pour un meilleur aspect */
+  font-size: 1rem; /* Ajuster la taille de la police */
+  cursor: pointer; /* Ajouter un pointeur au survol */
+  font-family: 'Archivo', 'Helvetica', 'sans-serif'; /* Police du modal */
+}

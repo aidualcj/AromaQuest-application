@@ -1,0 +1,2 @@
+class MagasinsController < ApplicationController
+end

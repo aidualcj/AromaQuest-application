@@ -1,0 +1,131 @@
+.banner {
+  background-color: white;
+  text-align: center;
+  padding: 40px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.banner-title {
+  font-size: 2rem;
+  color: black;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  font-weight: bold;
+
+  @media (max-width: 576px) {
+    font-size: 1.5rem; // Ajuster la taille de la police pour les petits écrans
+  }
+}
+
+.banner-subtitle {
+  font-size: 1.1rem;
+  color: black;
+  margin-bottom: 5px;
+}
+
+.container.dashboard {
+  background-color: #f3f2ed;
+  text-align: left;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.dashboard-cards .card {
+  background-color: #fff;
+  border: none;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: calc(100% - 20px);
+  max-width: 600px;
+  min-height: 50px; /* Définir une hauteur minimale pour les cartes */
+  height: 50px; /* Définir une hauteur fixe pour les cartes */
+
+}
+
+.dashboard-cards .card-body {
+  padding: 10px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'archivo black', sans-serif;
+  text-transform: uppercase;
+  font-size: 0,7rem;
+}
+
+.dashboard-cards .card-body i.icon-large {
+  font-size: 1,2em;
+  color: #000;
+}
+
+.dashboard-cards .card-body a {
+  flex-grow: 1;
+  text-align: left;
+  padding-left: 20px;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  position: relative;
+}
+
+.dashboard-cards .card-body .fa-caret-right {
+  font-size: 1em;
+}
+
+.notifications-newsletter-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0 20px;
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    font-size: 1rem;
+    color: #000;
+  }
+
+  .icon-toggle {
+    font-size: 3rem;
+    color: #9A9B89;
+    margin-left: 20px;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid #878080;
+    margin: 0;
+    width: 100%;
+  }
+}
+
+.logout-button {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.logout-button .btn-logout {
+  background-color: #9A9B89;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  display: inline-block;
+  border: none;
+  width: 150px;
+}
+
+@media (max-width: 576px) {
+  .logout-button {
+    display: flex;
+    justify-content: center;
+  }
+
+  .logout-button .btn-logout {
+    width: 100%;
+    max-width: 300px;
+  }
+}

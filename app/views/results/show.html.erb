@@ -1,0 +1,53 @@
+<div class="results-container">
+  <h1 class="title-results">VOS RESULTATS</h1>
+  <p class="results-description">Voici une sélection de parfums qui correspondent parfaitement à vos goûts et préférences olfactives. Selon vos réponses, vous découvrirez des fragrances avec des notes de tête fraîches et fruitées, des notes de cœur florales et élégantes, ainsi que des notes de fond chaleureuses et boisées. Explorez ces créations uniques qui reflètent votre personnalité !</p>
+
+  <p class="results-amount">NOMBRE DE RÉSULTATS : <%= @perfumes_count %></p>
+
+  <div class="card-list">
+    <% @perfumes.each do |perfume| %>
+      <div class="perfume-card">
+        <%= link_to perfume_path(perfume), class: "text-decoration-none text-dark perfume-link" do %>
+          <div class="perfume-image-container">
+            <% if perfume.illustration.attached? %>
+              <%= cl_image_tag perfume.illustration.key, alt: perfume.name, class: "perfume-image img-fluid" %>
+            <% else %>
+              <img src="<%= perfume.photo %>" class="perfume-image" alt="<%= perfume.name %>">
+            <% end %>
+            <% if current_user %>
+              <% if current_user.favorites.exists?(perfume: perfume) %>
+                <%= link_to perfume_favorite_path(perfume, current_user.favorites.find_by(perfume: perfume)), method: :delete, class: "favorite-button" do %>
+                  <i class="fa-solid fa-heart"></i>
+                <% end %>
+              <% else %>
+                <%= link_to perfume_favorites_path(perfume_id: perfume.id), data: { controller: "favorite", action: "favorite#changeFavorite"}, class: "favorite-button" do %>
+                  <i class="fa-regular fa-heart" data-favorite-target="icon"></i>
+                  <div data-favorite-target="notice"></div>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <h5 class="perfume-name"><%= perfume.name %></h5>
+            <div class="perfume-details">
+              <p class="perfume-brand"><strong><%= perfume.brand %></strong></p>
+              <p class="perfume-price"><%= number_to_currency(perfume.price, unit: "€", format: "%n %u") %></p>
+            </div>
+            <div class="perfume-reviews">
+              <p>Avis (<%= perfume.reviews.count %>)</p>
+              <div class="perfume-rating">
+                <% average_rating = perfume.reviews.average(:rating).to_f.round(1) %>
+                <% average_rating.to_i.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %>
+                <% (5 - average_rating.to_i).times do %>
+                  <i class="far fa-star"></i>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

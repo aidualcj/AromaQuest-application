@@ -1,0 +1,54 @@
+.mapboxgl-canvas {
+  background-color: black;
+}
+
+.map-modal-content {
+  background-color: black;
+  color: white;
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 16px;
+
+  h3{
+    color: white;
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+.mapboxgl-popup-content {
+  text-align: center;
+  font-family: 'Archivo Black', sans-serif;
+  color: white;
+}
+
+.magasin {
+  margin : 10px;
+  color : white;
+}
+
+hr {
+  width: 60%;
+  margin-left: 50px;
+  color : white;
+  opacity: 1;
+  border: 1px solid;
+}
+
+.modal-title-map{
+  font-family: "Crimson Text", "Georgia", "serif";
+  font-weight: bold;
+  color : white;
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+}
+
+.map-box{
+  margin-bottom: 20px;
+}
+
+.modal-header i {
+  color: white;
+  margin: 0px;
+}

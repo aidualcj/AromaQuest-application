@@ -1,0 +1,271 @@
+.perfume-details-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+.return-button {
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+  .btn-return {
+    color: #000;
+    font-size: 1.5rem;
+    text-decoration: none;
+  }
+}
+
+// Card avec l'image du parfum
+.perfume-image-card-wrapper {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.perfume-image-card {
+  background-color: #fff;
+  padding: 0;
+  border: none;
+  position: relative;
+
+  .position-relative {
+    position: relative;
+  }
+
+  .position-absolute {
+    position: absolute;
+  }
+
+  .top-right {
+    top: 10px;
+    right: 10px;
+  }
+
+  .bottom-right {
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .btn-heart {
+    color: #000;
+    font-size: 2rem;
+  }
+
+  .btn-share {
+    color: #000;
+    background-color: transparent;
+    border: none;
+    padding: 10px;
+    font-size: 2rem;
+  }
+}
+
+// Partie avec les boutons "Trouver mon parfum" et "Cart"
+.action-buttons-wrapper {
+  margin-bottom: 40px;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-dark {
+  background-color: #000000;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  width: auto;
+}
+
+.btn-cart {
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #000000;
+}
+
+.perfume-details {
+  margin-bottom: 20px;
+  text-align: left;
+  font-family: 'archivo black', sans-serif;
+
+  .perfume-info {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+
+    .perfume-brand {
+      font-size: 1.25rem;
+      color: #000000;
+    }
+
+    .perfume-price {
+      font-size: 1.25rem;
+      color: #000000;
+      margin-left: 15px;
+
+    }
+  }
+
+  .perfume-name {
+    font-size: 1.2rem;
+    color: #000000;
+    text-transform: uppercase;
+  }
+
+  .perfume-intensity {
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    .intensity-dots {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      .dot {
+        width: 8px;
+        height: 8px;
+        background-color: #000;
+        border-radius: 50%;
+        display: inline-block;
+      }
+
+      .dot.empty {
+        background-color: #e0e0e0;
+      }
+    }
+  }
+}
+
+
+.perfume-description {
+  margin-bottom: 30px;
+  text-align: left;
+  font-family: 'crimson text', serif;
+}
+
+// Avis
+.ratings {
+  margin-bottom: 20px;
+
+  p {
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+
+    .average-rating {
+      margin-left: 10px;
+      display: flex;
+      align-items: center;
+
+      i {
+        color: #000000;
+      }
+    }
+
+    i.fa-chevron-down {
+      font-size: 1rem;
+    }
+  }
+
+  .collapse {
+    margin-top: 10px;
+  }
+
+  .review {
+    margin-bottom: 10px;
+
+    .rating i {
+      color: #000000;
+    }
+  }
+}
+
+.notes-section {
+  margin-bottom: 30px;
+
+  .btn-notes {
+    background-color: #9A9B89;
+    color: #fff;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    i {
+      font-size: 1rem;
+      margin-left: 10px;
+    }
+
+    &.collapsed {
+      i {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .collapse-notes {
+    background-color: #9A9B89;
+    color: #fff;
+    padding: 10px;
+    border-radius: 4px;
+    width: 100%;
+  }
+
+  .notes-section, .btn-notes, .collapse {
+    margin: 0;
+    padding: 10px;
+    border: none;
+  }
+}
+
+// Modal pour partager sur WhatsApp
+.modal-content {
+  .modal-header {
+    .modal-title {
+      font-size: 1.25rem;
+    }
+
+    .btn-close {
+      background: none;
+      border: none;
+      font-size: 1.25rem;
+    }
+  }
+
+  .modal-body {
+    .btn-success-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-success {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+}
+
+.btn-avis {
+  background-color: black;
+  color: white;
+  border-radius: 50px;
+  padding: 10px 20px;
+  width: fit-content;
+  margin: 20px 0px;
+  i {
+    margin-right: 5px;
+  }
+}

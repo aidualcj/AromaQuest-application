@@ -1,0 +1,229 @@
+.banner {
+  background-color: white;
+  text-align: center;
+  padding: 40px;
+  border-bottom: 1px solid #eaeaea;
+
+  .banner-title {
+    font-size: 2rem;
+    color: black;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    font-weight: bold;
+
+    @media (max-width: 576px) {
+      font-size: 1.5rem; // Ajuster la taille de la police pour les petits écrans
+    }
+  }
+
+  .banner-subtitle {
+    font-size: 1.1rem;
+    color: black;
+  }
+}
+
+.main-container {
+  background-color: #F3F2ED;
+  padding: 20px;
+
+  .filter-button-container {
+    text-align: left;
+    margin-bottom: 20px;
+
+    .filter-button {
+      display: inline-flex;
+      align-items: left;
+      padding: 10px 20px;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      font-size: 1rem;
+      font-family: 'archivo black', sans-serif;
+      font-weight: bold;
+
+      .fas.fa-filter {
+        margin-right: 5px;
+        color: black;
+      }
+    }
+  }
+
+  .filter-offcanvas {
+    .offcanvas-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .offcanvas-close-button {
+        cursor: pointer;
+      }
+    }
+
+    .offcanvas-body {
+      .form-group {
+        margin-bottom: 20px;
+
+        .form-label {
+          display: block;
+          margin-bottom: 5px;
+        }
+
+        .form-select {
+          border: none; // Supprimer la bordure
+          background-color: #f9f9f9; // Fond clair pour plus de visibilité (optionnel)
+          padding: 10px; // Ajuster le padding si nécessaire
+          font-family: 'Archivo', sans-serif; // Utiliser la police Archivo
+        }
+
+        .form-check {
+          display: flex;
+          align-items: center;
+          margin-bottom: 15px;
+
+          .form-check-input {
+            width: 20px; // Ajuster la taille du bouton radio
+            height: 20px; // Ajuster la taille du bouton radio
+            border: 2px solid #000000; // Bordure noire
+            accent-color: #000000; // Couleur de l'accent (remplissage du bouton lorsque sélectionné)
+            cursor: pointer;
+
+            &:checked {
+              background-color: #000000; // Fond noir lorsque sélectionné
+              border-color: #000000; // Bordure noire lorsque sélectionné
+            }
+          }
+          .form-check-label {
+            margin-left: 10px; // Espacement entre le bouton radio et le texte
+            font-family: 'Archivo', sans-serif; // Police Archivo
+            cursor: pointer;
+          }
+        }
+      }
+
+      .form-actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 40px;
+
+        .button-reset,
+        .button-submit {
+          font-family: 'Archivo', sans-serif; // Utiliser la police Archivo
+          font-weight: bold; // Mettre le texte en gras pour plus de visibilité
+          padding: 12px 50px; // Ajuster le padding pour élargir les boutons
+          cursor: pointer;
+          border: none; // Supprimer la bordure
+          border-radius: 4px; // Optionnel : pour arrondir les coins des boutons
+        }
+
+        .button-reset {
+          background-color: transparent; // Supprimer le fond
+          color: #000000; // Couleur du texte (noir pour la visibilité)
+          border: 2px solid #000000; // Bordure noire pour le bouton "Effacer"
+        }
+
+        .button-submit {
+          background-color: #000000; // Fond noir pour le bouton "Valider"
+          color: #ffffff; // Texte blanc pour le bouton "Valider"
+          border: 2px solid #000000; // Optionnel : bordure noire pour plus de contraste
+        }
+      }
+    }
+  }
+
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; // Espacement entre les cartes
+  }
+
+  .perfume-card {
+    background-color: white;
+    border: none;
+    border-radius: 4px;
+    position: relative;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+
+    .perfume-image-container {
+      padding: 10px;
+      position: relative;
+      margin-bottom: 40px; // Espacement entre l'image et le titre du parfum
+
+      .perfume-image {
+        width: 100%;
+        height: auto;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+      }
+
+      .favorite-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        i {
+          font-size: 2rem;
+          color: rgb(0, 0, 0);
+
+          &.fa-regular {
+            color: grey;
+          }
+        }
+      }
+    }
+
+    .card-body {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .perfume-name {
+        font-size: 1rem;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
+
+      .perfume-details {
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+        align-items: center; // Assure que le prix et la marque sont bien alignés verticalement
+        margin-bottom: 10px;
+
+        .perfume-brand {
+          font-size: 1rem;
+        }
+
+        .perfume-price {
+          font-family: 'Archivo Black', sans-serif;
+        }
+      }
+
+      .perfume-reviews {
+        display: flex;
+        align-items: center; // Aligner verticalement le texte "Avis" et les étoiles
+        margin-bottom: 10px; // Réduire l'espacement sous le bloc des avis
+
+        p {
+          margin-bottom: 0; // Supprimer les marges pour rapprocher le texte des étoiles
+        }
+
+        .perfume-rating {
+          display: flex;
+          gap: 2px;
+          margin-left: 10px; // Espacement entre le texte "Avis" et les étoiles
+
+          i {
+            color: black;
+            font-size: 0,5rem;
+          }
+        }
+      }
+    }
+  }
+}
