@@ -1,6 +1,6 @@
 <h1><strong>AromaQuest was a two-week group project aimed at helping individuals who want to renew their perfume selection.</strong></h1>
 
-It's a little web marketplace developed with Rails using the MVC model, employs a sophisticated algorithm and 14 models to provide personalized perfume recommendations based on a questionnaire and the <strong>Guerlain database</strong>. Users can save and manage their results and favorites in an intuitive dashboard and add perfumes to their cart for a seamless purchase experience.. Additionally, the project includes location-based features.
+It's a little web marketplace developed with Rails using the MVC model, employs an algorithm and 14 models to provide personalized perfume recommendations based on a questionnaire and the <strong>Guerlain database</strong>. Users can save and manage their results and favorites in an intuitive dashboard and add perfumes to their cart for a seamless purchase experience.. Additionally, the project includes location-based features.
 
 <em>As an educational project, the code is continuously being improved.</em>
 
